@@ -1,0 +1,44 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "DVD-Yesness"
+description = "DVD logo spin yes yayayayayay very cool fun project i made in about 1hr probably"
+readme = "README.md"
+requires-python = ">= 3.8"
+version = "2020.0.0"
+dependencies = [
+  "tkinter",
+  "Pillow"
+]
+authors = [
+  {name = "SupKittyMeow", email = "supkittymeow@gmail.com"},
+]
+license = {file = "LICENSE"}
+keywords = ["dvd", "logo", "spin", "yes", "yay", "happy", "cool", "fun", "project"]
+classifiers = [
+  # How mature is this project? Common values are
+  #   3 - Alpha
+  #   4 - Beta
+  #   5 - Production/Stable
+  "Development Status :: 5 - Production/Stable",
+
+  # Indicate who your project is intended for
+  "Intended Audience :: Developers",
+  "Topic :: Fun :: Random Projects",
+
+  # Pick your license as you wish (see also "license" above)
+  "License :: CC0 :: CC0 1.0",
+
+  # Specify the Python versions you support here.
+
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+]
+
+[project.urls]
+Repository = "https://github.com/SupKittyMeow/DVD-yesness"
+Issues = "https://github.com/SupKittyMeow/DVD-yesness/issues"

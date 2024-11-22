@@ -3,104 +3,106 @@ from PIL import Image, ImageTk, ImageOps
 import time
 from random import randint, random
 
-SCALE_FACTOR = 10
-MULTIPLIER = 1
+class DVD():
+    def __init__(self):
+        SCALE_FACTOR = 10
+        MULTIPLIER = 1
 
-root = tkinter.Tk()
+        root = tkinter.Tk()
 
-screen_width = root.winfo_screenwidth()
-screen_height = root.winfo_screenheight()
+        screen_width = root.winfo_screenwidth()
+        screen_height = root.winfo_screenheight()
 
 
-bg = Image.open("image.png")
+        bg = Image.open("image.png")
 
-img_width, img_height = bg.size
-img_width //= SCALE_FACTOR
-img_height //= SCALE_FACTOR
+        img_width, img_height = bg.size
+        img_width //= SCALE_FACTOR
+        img_height //= SCALE_FACTOR
 
-bg = bg.resize((img_width, img_height))
-bgL = bg.convert("L")
+        bg = bg.resize((img_width, img_height))
+        bgL = bg.convert("L")
 
-root.geometry("{}x{}".format(img_width, img_height))
-root.overrideredirect(True)
-
-img = ImageTk.PhotoImage(bg)
-
-label1 = tkinter.Label(root, image = img) 
-label1.place(x = 0, y = 0)
-
-x = 0
-y = 0
-
-xVel = random()
-yVel = random()
-
-def randColor():
-    return ImageOps.colorize(bgL, black=(0, 0, 0, 0), white=(randint(0, 255), randint(0, 255), randint(0, 255)))
-
-    
-while True:
-    hits = 0
-    
-    windowX = root.winfo_x()
-    windowY = root.winfo_y()
-
-    if windowX == screen_width - 250:
-        xVel = -MULTIPLIER
-        bg = randColor()
+        root.geometry("{}x{}".format(img_width, img_height))
+        root.overrideredirect(True)
 
         img = ImageTk.PhotoImage(bg)
 
         label1 = tkinter.Label(root, image = img) 
         label1.place(x = 0, y = 0)
 
-        hits += 1
+        x = 0
+        y = 0
 
-    elif windowX == 0:
-        xVel = MULTIPLIER
+        xVel = random()
+        yVel = random()
 
-        bg = randColor()
+        def randColor():
+            return ImageOps.colorize(bgL, black=(0, 0, 0, 0), white=(randint(0, 255), randint(0, 255), randint(0, 255)))
 
-        img = ImageTk.PhotoImage(bg)
 
-        label1 = tkinter.Label(root, image = img) 
-        label1.place(x = 0, y = 0)
+        while True:
+            hits = 0
+            
+            windowX = root.winfo_x()
+            windowY = root.winfo_y()
 
-        hits += 1
+            if windowX == screen_width - 250:
+                xVel = -MULTIPLIER
+                bg = randColor()
 
-    if windowY == screen_height - 125:
-        yVel = -MULTIPLIER
+                img = ImageTk.PhotoImage(bg)
 
-        bg = randColor()
+                label1 = tkinter.Label(root, image = img) 
+                label1.place(x = 0, y = 0)
 
-        img = ImageTk.PhotoImage(bg)
+                hits += 1
 
-        label1 = tkinter.Label(root, image = img)
-        label1.place(x = 0, y = 0)
+            elif windowX == 0:
+                xVel = MULTIPLIER
 
-        hits += 1
+                bg = randColor()
 
-    elif windowY == 45:
-        yVel = MULTIPLIER
+                img = ImageTk.PhotoImage(bg)
 
-        bg = randColor()
+                label1 = tkinter.Label(root, image = img) 
+                label1.place(x = 0, y = 0)
 
-        img = ImageTk.PhotoImage(bg)
+                hits += 1
 
-        label1 = tkinter.Label(root, image = img)
-        label1.place(x = 0, y = 0)
+            if windowY == screen_height - 125:
+                yVel = -MULTIPLIER
 
-        hits += 1   
+                bg = randColor()
 
-    root.geometry('+{}+{}'.format(int(x), int(y)))
+                img = ImageTk.PhotoImage(bg)
 
-    if (hits >= 2):
-        # if it hits the corner, happiness happens
-        print("OMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMG")
+                label1 = tkinter.Label(root, image = img)
+                label1.place(x = 0, y = 0)
 
-    root.update()
+                hits += 1
 
-    x += xVel
-    y += yVel
+            elif windowY == 45:
+                yVel = MULTIPLIER
 
-    time.sleep(0.001)
+                bg = randColor()
+
+                img = ImageTk.PhotoImage(bg)
+
+                label1 = tkinter.Label(root, image = img)
+                label1.place(x = 0, y = 0)
+
+                hits += 1   
+
+            root.geometry('+{}+{}'.format(int(x), int(y)))
+
+            if (hits >= 2):
+                # if it hits the corner, happiness happens
+                print("OMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMG")
+
+            root.update()
+
+            x += xVel
+            y += yVel
+
+            time.sleep(0.001)
