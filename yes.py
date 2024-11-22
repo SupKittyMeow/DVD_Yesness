@@ -3,7 +3,8 @@ from PIL import Image, ImageTk, ImageOps
 import time
 from random import randint, random
 
-SCALE_FACTOR = 5
+SCALE_FACTOR = 10
+MULTIPLIER = 1
 
 root = tkinter.Tk()
 
@@ -31,21 +32,22 @@ label1.place(x = 0, y = 0)
 x = 0
 y = 0
 
-# root.?xpos? = randint(0, screen_width - 475)
-# root.?ypos? = randint(50, screen_height - 250)
-
 xVel = random()
 yVel = random()
 
+def randColor():
+    return ImageOps.colorize(bgL, black=(0, 0, 0, 0), white=(randint(0, 255), randint(0, 255), randint(0, 255)))
+
+    
 while True:
     hits = 0
     
     windowX = root.winfo_x()
     windowY = root.winfo_y()
 
-    if windowX == screen_width - 475:
-        xVel = -1
-        bg = ImageOps.colorize(bgL, black=(0, 0, 0, 0), white=(randint(0, 255), randint(0, 255), randint(0, 255)))
+    if windowX == screen_width - 250:
+        xVel = -MULTIPLIER
+        bg = randColor()
 
         img = ImageTk.PhotoImage(bg)
 
@@ -55,9 +57,9 @@ while True:
         hits += 1
 
     elif windowX == 0:
-        xVel = 1
+        xVel = MULTIPLIER
 
-        bg = ImageOps.colorize(bgL, black=(0, 0, 0, 0), white=(randint(0, 255), randint(0, 255), randint(0, 255)))
+        bg = randColor()
 
         img = ImageTk.PhotoImage(bg)
 
@@ -66,10 +68,10 @@ while True:
 
         hits += 1
 
-    if windowY == screen_height - 250:
-        yVel = -1
+    if windowY == screen_height - 125:
+        yVel = -MULTIPLIER
 
-        bg = ImageOps.colorize(bgL, black=(0, 0, 0, 0), white=(randint(0, 255), randint(0, 255), randint(0, 255)))
+        bg = randColor()
 
         img = ImageTk.PhotoImage(bg)
 
@@ -78,10 +80,10 @@ while True:
 
         hits += 1
 
-    elif windowY == 50:
-        yVel = 1
+    elif windowY == 45:
+        yVel = MULTIPLIER
 
-        bg = ImageOps.colorize(bgL, black=(0, 0, 0, 0), white=(randint(0, 255), randint(0, 255), randint(0, 255)))
+        bg = randColor()
 
         img = ImageTk.PhotoImage(bg)
 
