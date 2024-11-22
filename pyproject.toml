@@ -25,8 +25,8 @@ classifiers = [
   "Development Status :: 5 - Production/Stable",
 
   # Indicate who your project is intended for
-  "Intended Audience :: Developers",
-  "Topic :: Fun :: Random Projects",
+  "Intended Audience :: End Users/Desktop",
+  "Topic :: Games/Entertainment",
 
   # Pick your license as you wish (see also "license" above)
   "License :: CC0 :: CC0 1.0",
