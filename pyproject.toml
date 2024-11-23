@@ -4,6 +4,8 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/foo"]
+modules = ["DVD_Yesness"]
+package_data = { "": ["image.png"] }
 
 [project]
 name = "DVD-Yesness"
