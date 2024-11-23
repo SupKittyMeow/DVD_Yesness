@@ -14,7 +14,7 @@ include = ["src/DVD_Yesness/image.png"]
 source = "src"
 
 [project]
-name = "DVD-Yesness"
+name = "DVD_Yesness"
 description = "DVD logo spin yes yayayayayay very cool fun project i made in about 1hr probably"
 readme = "README.md"
 requires-python = ">= 3.8"
@@ -35,5 +35,5 @@ classifiers = [
 ]
 
 [project.urls]
-Repository = "https://github.com/SupKittyMeow/DVD-yesness"
-Issues = "https://github.com/SupKittyMeow/DVD-yesness/issues"
+Repository = "https://github.com/SupKittyMeow/DVD_yesness"
+Issues = "https://github.com/SupKittyMeow/DVD_yesness/issues"
