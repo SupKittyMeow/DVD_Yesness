@@ -12,7 +12,6 @@ readme = "README.md"
 requires-python = ">= 3.8"
 version = "2020.0.0"
 dependencies = [
-  "tkinter",
   "Pillow"
 ]
 authors = [
