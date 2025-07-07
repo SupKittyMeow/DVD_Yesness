@@ -15,7 +15,7 @@ name = "DVD_Yesness"
 description = "DVD logo spin yes yayayayayay very cool fun project i made in about 1hr probably"
 readme = "README.md"
 requires-python = ">= 3.8"
-version = "1.0.3"
+version = "1.0.3.1"
 dependencies = ["Pillow"]
 authors = [{name = "SupKittyMeow", email = "supkittymeow@gmail.com"}]
 license = {file = "LICENSE"}
