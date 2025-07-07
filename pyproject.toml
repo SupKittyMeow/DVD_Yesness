@@ -7,7 +7,7 @@ exclude = ["/.github"]
 include = ["src/DVD_Yesness/image.png"]
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/DVD_Yesness"]
+packages = ["src/DVD_Yesness/__init__.py"]
 include = ["src/DVD_Yesness/image.png"]
 
 [project]
@@ -15,7 +15,7 @@ name = "DVD_Yesness"
 description = "DVD logo spin yes yayayayayay very cool fun project i made in about 1hr probably"
 readme = "README.md"
 requires-python = ">= 3.8"
-version = "1.0.3.2"
+version = "1.0.3.3"
 dependencies = ["Pillow"]
 authors = [{name = "SupKittyMeow", email = "supkittymeow@gmail.com"}]
 license = {file = "LICENSE"}
