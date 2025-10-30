@@ -1,12 +1,12 @@
 import tkinter
 from PIL import Image, ImageTk, ImageOps
 import time
-from random import randint, random
+import random
 
 class DVD():
     def __init__(self):
         SCALE_FACTOR = 10
-        MULTIPLIER = 1
+        MULTIPLIER = 0.4
 
         root = tkinter.Tk()
 
@@ -14,16 +14,19 @@ class DVD():
         screen_height = root.winfo_screenheight()
 
 
-        bg = Image.open("image.png")
+        bg = Image.open("src/DVD_Yesness/image.png")
 
         img_width, img_height = bg.size
         img_width //= SCALE_FACTOR
         img_height //= SCALE_FACTOR
 
+        root.geometry("{}x{}+{}+{}".format(img_width, img_height, screen_width // 2, screen_height // 2))
+        x = screen_width // 2
+        y = screen_height // 2
+
         bg = bg.resize((img_width, img_height))
         bgL = bg.convert("L")
 
-        root.geometry("{}x{}".format(img_width, img_height))
         root.overrideredirect(True)
 
         img = ImageTk.PhotoImage(bg)
@@ -31,24 +34,27 @@ class DVD():
         label1 = tkinter.Label(root, image = img) 
         label1.place(x = 0, y = 0)
 
-        x = 0
-        y = 0
+        if (random.randint(0, 1) == 0):
+            xVel = MULTIPLIER
+        else:
+            xVel = -MULTIPLIER
 
-        xVel = random()
-        yVel = random()
+        if (random.randint(0, 1) == 0):
+            yVel = MULTIPLIER
+        else:
+            yVel = -MULTIPLIER
 
         def randColor():
-            return ImageOps.colorize(bgL, black=(0, 0, 0, 0), white=(randint(0, 255), randint(0, 255), randint(0, 255)))
+            newImg = Image.new('RGB', (img_width, img_height), color=(random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)))
+            return Image.composite(newImg, bg, bgL)
+            # return ImageOps.colorize(bgL, black=(0, 0, 0, 0), white=(random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)))
 
 
         while True:
             hits = 0
-            
-            windowX = root.winfo_x()
-            windowY = root.winfo_y()
 
-            if windowX == screen_width - 250:
-                xVel = -MULTIPLIER
+            if x >= screen_width - img_width:
+                xVel = -xVel
                 bg = randColor()
 
                 img = ImageTk.PhotoImage(bg)
@@ -58,8 +64,8 @@ class DVD():
 
                 hits += 1
 
-            elif windowX == 0:
-                xVel = MULTIPLIER
+            elif x <= 0:
+                xVel = -xVel
 
                 bg = randColor()
 
@@ -70,8 +76,8 @@ class DVD():
 
                 hits += 1
 
-            if windowY == screen_height - 125:
-                yVel = -MULTIPLIER
+            if y >= screen_height - img_height:
+                yVel = -yVel
 
                 bg = randColor()
 
@@ -82,8 +88,8 @@ class DVD():
 
                 hits += 1
 
-            elif windowY == 45:
-                yVel = MULTIPLIER
+            elif y <= 0:
+                yVel = -yVel
 
                 bg = randColor()
 
@@ -94,11 +100,13 @@ class DVD():
 
                 hits += 1   
 
-            root.geometry('+{}+{}'.format(int(x), int(y)))
-
             if (hits >= 2):
                 # if it hits the corner, happiness happens
                 print("OMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMGOMG")
+
+            root.geometry('+{}+{}'.format(int(x), int(y)))
+            root.overrideredirect(True)
+            root.attributes('-topmost', True)
 
             root.update()
 
@@ -106,3 +114,4 @@ class DVD():
             y += yVel
 
             time.sleep(0.001)
+DVD()
